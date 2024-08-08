@@ -16,10 +16,10 @@ import { computed, ref, watch } from 'vue'
 import GridItem from './components/GridItem.vue'
 import Todo from './components/Todo.vue'
 
-const todos = ref([])
+const todos = ref(JSON.parse(localStorage.getItem('todos') || '[]'))
 
 watch(todos.value, (todos) => {
-  console.log('todos', todos)
+  localStorage.setItem('todos', JSON.stringify(todos))
 })
 
 const pendingTodos = computed(() => todos.value.filter(todo => todo.status === 'pending'))

@@ -11,7 +11,7 @@
         >
         <span
           class="cursor-pointer"
-          v-if="status !== 'completed'"
+          v-if="status !== 'done'"
           @click="$emit('next')"
           >→</span
         >
@@ -22,12 +22,11 @@
 
 <script setup>
 import { defineProps } from 'vue'
-import { v4 as uuid } from 'uuid'
 
 defineProps({
   id: {
     type: String,
-    default: uuid()
+    default: crypto.randomUUID()
   },
   text: {
     type: String,

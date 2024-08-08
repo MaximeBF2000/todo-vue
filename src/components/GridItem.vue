@@ -5,9 +5,11 @@
       <Todo
         v-for="todo in todos"
         :key="todo.id"
+        :id="todo.id"
         :text="todo.text"
-        @next="$emit('previous', todo)"
-        @previous="$emit('next', todo)"
+        :status="todo.status"
+        @previous="$emit('previous', todo)"
+        @next="$emit('next', todo)"
       />
     </ul>
     <div v-else class="text-gray-400 flex flex-col items-center">
@@ -49,7 +51,11 @@ const emit = defineEmits(['addTodo', 'next', 'previous'])
 const todo = ref('')
 
 const addTodo = () => {
-  emit('addTodo', { text: todo.value, status: 'pending', completed: false })
+  emit('addTodo', {
+    id: crypto.randomUUID(),
+    text: todo.value,
+    status: 'pending'
+  })
   todo.value = ''
 }
 </script>
