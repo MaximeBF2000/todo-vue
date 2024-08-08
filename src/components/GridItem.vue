@@ -8,8 +8,10 @@
         :id="todo.id"
         :text="todo.text"
         :status="todo.status"
+        :deletable="deletable"
         @previous="$emit('previous', todo)"
         @next="$emit('next', todo)"
+        @deleteTodo="$emit('deleteTodo', todo)"
       />
     </ul>
     <div v-else class="text-gray-400 flex flex-col items-center">
@@ -41,6 +43,10 @@ defineProps({
     default: () => []
   },
   withAddForm: {
+    type: Boolean,
+    default: false
+  },
+  deletable: {
     type: Boolean,
     default: false
   }

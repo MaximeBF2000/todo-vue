@@ -10,6 +10,12 @@
           >←</span
         >
         <span
+          v-if="deletable"
+          @click="$emit('deleteTodo', todo)"
+          class="cursor-pointer"
+          >🗑️</span
+        >
+        <span
           class="cursor-pointer"
           v-if="status !== 'done'"
           @click="$emit('next')"
@@ -39,6 +45,10 @@ defineProps({
   status: {
     type: String,
     default: 'pending'
+  },
+  deletable: {
+    type: Boolean,
+    default: false
   }
 })
 

@@ -6,7 +6,7 @@
     <div class="flex gap-10 w-full">
       <GridItem title="Pending TODOS" :todos="pendingTodos" withAddForm @addTodo="todo => todos.push(todo)" @next="setStatusToCurrent" />
       <GridItem title="Working on it" :todos="currentTodos" @previous="setStatusToPending" @next="setStatusToDone" />
-      <GridItem title="Dones" :todos="doneTodos" @previous="setStatusToCurrent" />
+      <GridItem title="Dones" :todos="doneTodos" @previous="setStatusToCurrent" deletable @deleteTodo="deleteTodo" />
     </div>
   </div>
 </template>
@@ -36,6 +36,11 @@ const setStatusToDone = todo => {
 
 const setStatusToPending = todo => {
   todo.status = 'pending'
+}
+
+const deleteTodo = todo => {
+  todos.value = todos.value.filter(t => t.id !== todo.id)
+  localStorage.setItem('todos', JSON.stringify(todos.value))
 }
 
 </script>
