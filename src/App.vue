@@ -2,7 +2,7 @@
 <template>
   <div class="w-full h-full bg-gray-900 min-h-screen p-8 text-white flex flex-col justify-center">
     <h1 class="mb-4 text-center font-black uppercase text-6xl">Todo <span class="text-green-600">Vue</span></h1>
-    <p class="text-center mb-20 text-gray-200">Made in 2 hours with React skills and ChatGPT prompt mastery ;)</p>
+    <p class="text-center mb-20 text-gray-200">Made in 2 hours with React skills and adaptability ;)</p>
     <div class="flex gap-10 w-full">
       <GridItem title="Pending TODOS" :todos="pendingTodos" withAddForm @addTodo="todo => todos.push(todo)" @next="setStatusToCurrent" />
       <GridItem title="Working on it" :todos="currentTodos" @previous="setStatusToPending" @next="setStatusToDone" />
